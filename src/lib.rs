@@ -186,14 +186,13 @@ fn srgb_to_linear(value: usize) -> f64 {
 
 // Encode
 
-// TODO: Think about argument order here...
-// What is more common in Rust? Data or config first?
+#[wasm_bindgen(js_name = "encode")]
 pub fn encode(
     pixels: Vec<u8>,
-    cx: usize,
-    cy: usize,
     width: usize,
     height: usize,
+    cx: usize,
+    cy: usize,
 ) -> Result<String, EncodingError> {
     // Should we assume RGBA for round-trips? Or does it not matter?
     let bytes_per_row = width * 4;
